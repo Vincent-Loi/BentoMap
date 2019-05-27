@@ -12,24 +12,24 @@ import MapKit
 extension MKMapRect: BentoRect {
 
     public var minX: CGFloat {
-        return CGFloat(MKMapRectGetMinX(self))
+        return CGFloat(MKMapRect.world.minX)
     }
 
     public var minY: CGFloat {
-        return CGFloat(MKMapRectGetMinY(self))
+        return CGFloat(MKMapRect.world.minY)
     }
 
     public var maxX: CGFloat {
-        return CGFloat(MKMapRectGetMaxX(self))
+        return CGFloat(MKMapRect.world.maxX)
     }
 
     public var maxY: CGFloat {
-        return CGFloat(MKMapRectGetMaxY(self))
+        return CGFloat(MKMapRect.world.maxY)
     }
 
     public func containsCoordinate(_ c: BentoCoordinate) -> Bool {
         let originCoordinate = MKMapPoint(x: Double(c.coordX), y: Double(c.coordY))
-        return MKMapRectContainsPoint(self, originCoordinate)
+        return contains(originCoordinate)
     }
 
     public func divide(_ percent: CGFloat, edge: CGRectEdge) -> (MKMapRect, MKMapRect) {
@@ -43,18 +43,18 @@ extension MKMapRect: BentoRect {
 
         let slice = UnsafeMutablePointer<MKMapRect>.allocate(capacity: 1)
         defer {
-            slice.deinitialize()
+            slice.deallocate()
         }
         let remainder = UnsafeMutablePointer<MKMapRect>.allocate(capacity: 1)
         defer {
-            remainder.deinitialize()
+            remainder.deallocate()
         }
         MKMapRectDivide(self, slice, remainder, amount, edge)
         return (slice: slice[0], remainder: remainder[0])
     }
 
     public func unionWith(_ other: MKMapRect) -> MKMapRect {
-        return MKMapRectUnion(self, other)
+        return union(other)
     }
 
     public init(originCoordinate origin: BentoCoordinate, size: CGSize) {
