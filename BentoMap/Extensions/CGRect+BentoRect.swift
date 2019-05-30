@@ -9,6 +9,23 @@
 import Foundation
 
 extension CGRect: BentoRect {
+    
+    public var maxXFloat: CGFloat {
+        return maxX
+    }
+    
+    public var maxYFloat: CGFloat {
+        return maxY
+    }
+    
+    public var minXFloat: CGFloat {
+        return minX
+    }
+    
+    public var minYFloat: CGFloat {
+        return minY
+    }
+    
 
     public func containsCoordinate(_ c: BentoCoordinate) -> Bool {
         let point = CGPoint(x: c.coordX, y: c.coordY)

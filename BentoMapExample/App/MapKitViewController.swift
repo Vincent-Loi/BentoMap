@@ -84,7 +84,7 @@ private extension MapKitViewController {
 
     func updateAnnotations(inMapView mapView: MKMapView,
                                      forMapRect root: MKMapRect) {
-        guard !mapView.frame.isEmpty && !MKMapRectIsEmpty(root) else {
+        guard !mapView.frame.isEmpty && !root.isEmpty else {
             mapView.removeAnnotations(mapView.annotations)
             return
         }

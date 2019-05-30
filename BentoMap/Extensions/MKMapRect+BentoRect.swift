@@ -11,20 +11,20 @@ import MapKit
 
 extension MKMapRect: BentoRect {
 
-    public var minX: CGFloat {
-        return CGFloat(MKMapRect.world.minX)
+    public var minXFloat: CGFloat {
+        return CGFloat(minX)
     }
 
-    public var minY: CGFloat {
-        return CGFloat(MKMapRect.world.minY)
+    public var minYFloat: CGFloat {
+        return CGFloat(minY)
     }
 
-    public var maxX: CGFloat {
-        return CGFloat(MKMapRect.world.maxX)
+    public var maxXFloat: CGFloat {
+        return CGFloat(maxX)
     }
 
-    public var maxY: CGFloat {
-        return CGFloat(MKMapRect.world.maxY)
+    public var maxYFloat: CGFloat {
+        return CGFloat(maxY)
     }
 
     public func containsCoordinate(_ c: BentoCoordinate) -> Bool {

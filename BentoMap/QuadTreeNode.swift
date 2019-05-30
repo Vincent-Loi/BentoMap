@@ -22,17 +22,17 @@ public protocol BentoCoordinate {
 public protocol BentoRect {
 
     /// The horizontal max of the rectangle.
-    var maxX: CGFloat { get }
+    var maxXFloat: CGFloat { get }
 
     /// The vertical max of the rectangle.
-    var maxY: CGFloat { get }
+    var maxYFloat: CGFloat { get }
 
     /// The horizontal min of the rectangle.
-    var minX: CGFloat { get }
+    var minXFloat: CGFloat { get }
 
     /// The vertical min of the rectangle.
-    var minY: CGFloat { get }
-
+    var minYFloat: CGFloat { get }
+    
     /**
      A test to determine if this rectangle contains
      a given coordinate.

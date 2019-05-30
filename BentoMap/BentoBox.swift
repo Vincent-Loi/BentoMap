@@ -37,12 +37,12 @@ public extension BentoBox {
 
     /// The coordinate at the top left corner of the root rect
     public var minCoordinate: Coordinate {
-        return Coordinate(coordX: root.minX, coordY: root.minY)
+        return Coordinate(coordX: root.minXFloat, coordY: root.minYFloat)
     }
 
     /// The coordinate at the bottom right corner of the root rect
     public var maxCoordinate: Coordinate {
-        return Coordinate(coordX: root.maxX, coordY: root.maxY)
+        return Coordinate(coordX: root.maxXFloat, coordY: root.maxYFloat)
     }
 
 }
@@ -61,13 +61,13 @@ extension BentoBox {
     func containsCoordinate(_ coordinate: BentoCoordinate) -> Bool {
         // we aren't using MKMapRectContainsPoint(mapRect, pt) because it will test true for points that
         // are exatly on either edge, which means that a point exact on an edge may be counted in multiple boxes
-        let width = root.maxX - root.minX
-        let height = root.maxY - root.minY
+        let width = root.maxXFloat - root.minXFloat
+        let height = root.maxYFloat - root.minYFloat
 
-        let isContained = coordinate.coordX >= root.minX &&
-            coordinate.coordX < (root.minX + width) &&
-            coordinate.coordY >= root.minY &&
-            coordinate.coordY < (root.minY + height)
+        let isContained = coordinate.coordX >= root.minXFloat &&
+            coordinate.coordX < (root.minXFloat + width) &&
+            coordinate.coordY >= root.minYFloat &&
+            coordinate.coordY < (root.minYFloat + height)
         return isContained
     }
 
@@ -81,8 +81,8 @@ extension BentoBox {
      root of the bentoBox passed in
      */
     func intersectsBentoBox(_ bentoBox: BentoBox) -> Bool {
-        return root.minX < bentoBox.root.maxX && root.maxX > bentoBox.root.minX &&
-            root.minY < bentoBox.root.maxY && root.maxY > bentoBox.root.minY
+        return root.minXFloat < bentoBox.root.maxXFloat && root.maxXFloat > bentoBox.root.minXFloat &&
+            root.minYFloat < bentoBox.root.maxYFloat && root.maxYFloat > bentoBox.root.minYFloat
     }
 
     /// A wrapper around the 4 child nodes of the root

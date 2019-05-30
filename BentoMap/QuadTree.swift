@@ -71,13 +71,13 @@ public extension QuadTree {
         let stepSize = CGFloat(1.0 / scaleFactor)
 
         // normalizes the cell grid to make sure the first column is aligned to the step size to prevent jitter
-        let minX = (root.minX - root.minX.remainder(dividingBy: stepSize)) - stepSize
+        let minX = (root.minXFloat - root.minXFloat.remainder(dividingBy: stepSize)) - stepSize
         // normalizes the cell grid to make sure the last column is added to the buckets
-        let maxX = (root.maxX - root.maxY.remainder(dividingBy: stepSize)) + stepSize
+        let maxX = (root.maxXFloat - root.maxYFloat.remainder(dividingBy: stepSize)) + stepSize
         // normalizes the cell grid to make sure the first row is aligned to the step size to prevent jitter
-        let minY = (root.minY - root.minY.remainder(dividingBy: stepSize)) - stepSize
+        let minY = (root.minYFloat - root.minYFloat.remainder(dividingBy: stepSize)) - stepSize
         // normalizes the cell grid to make sure the last row is added to the buckets
-        let maxY = (root.maxY - root.maxY.remainder(dividingBy: stepSize)) + stepSize
+        let maxY = (root.maxYFloat - root.maxYFloat.remainder(dividingBy: stepSize)) + stepSize
 
         var result = [QuadTreeResult<NodeData, Rect, Coordinate>]()
 

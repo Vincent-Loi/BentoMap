@@ -153,8 +153,8 @@ class ClusterAnnotationView: AnimatedAnnotationView, TypedAnnotationView {
         label.text = typedAnnotation.map { "\($0.annotationNumbers.count)" }
 
         var size = label.systemLayoutSizeFitting(.minSize,
-                                                 withHorizontalFittingPriority: UILayoutPriorityFittingSizeLevel,
-                                                 verticalFittingPriority: UILayoutPriorityFittingSizeLevel)
+                                                 withHorizontalFittingPriority: UILayoutPriority.fittingSizeLevel,
+                                                 verticalFittingPriority: UILayoutPriority.fittingSizeLevel)
 
         size.width += 8
         size.height += 8

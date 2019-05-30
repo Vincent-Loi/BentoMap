@@ -14,7 +14,7 @@ class BaseAnnotation: NSObject, MKAnnotation {
     let originCoordinate: MKMapPoint
     let root: MKMapRect
     var coordinate: CLLocationCoordinate2D {
-        return MKCoordinateForMapPoint(originCoordinate)
+        return originCoordinate.coordinate
     }
 
     init(originCoordinate: MKMapPoint, root: MKMapRect) {
